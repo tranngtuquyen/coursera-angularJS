@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" ng-app="ShoppingListCheckOff">
+  <head>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="js/script.js"></script>
+    <style>
+      .emptyMessage {
+        font-weight: bold;
+        color: red;
+        font-size: 1.2em;
+      }
+      li {
+        margin-bottom: 7px;
+        font-size: 1.2em;
+      }
+      li > button {
+        margin-left: 6px;
+      }
+      button > span {
+        color: green;
+      }
+      .addNew {
+        width: 300px;
+      }
+      .list {
+        list-style-type: none;
+      }
+      .addButton {
+        background-color:chocolate;
+        color: white;
+      }
+    </style>
+  </head>
+<body>
+  <div class="container">
+  <h1>Shopping List Check Off</h1>
+
+  <div class="row">
+
+    <!-- To Buy List -->
+    <div class="col-md-6" ng-controller="ToBuyController as toBuy">
+     <h2>To Buy:</h2>
+     <div>
+      <input class="input form-control addNew" placeholder="Add new item" ng-model="toBuy.newItem">
+      <input class="input form-control addNew" placeholder="Quantity" ng-model="toBuy.quantity">
+     </div>
+     <div>
+     <button class="btn btn-default addButton" ng-click="toBuy.AddItem(toBuy.newItem, toBuy.quantity)">Add</button>
+      <div><p ng-if="toBuy.errorMsg">{{toBuy.errorMsg}}</p></div>
+    </div>
+     <ul>
+       <li class="list" ng-repeat="item in toBuy.buyList">Buy {{item.quantity}} {{item.name}}<button class="btn btn-default" ng-click="toBuy.BuyClick(item)"><span class="glyphicon glyphicon-ok" ></span> Bought</button></li>
+     </ul>
+     <div class="emptyMessage" ng-if="toBuy.buyList.length == 0">{{toBuy.message}}</div>
+    </div>
+
+    <!-- Already Bought List -->
+    <div class="col-md-6" ng-controller="AlreadyBoughtController as alreadyBought">
+     <h2>Already Bought:</h2>
+     <ul>
+       <li class="list" ng-repeat="item in alreadyBought.boughtList">Bought {{item.quantity}} {{item.name}}</li>
+     </ul>
+     <div class="emptyMessage" ng-if="alreadyBought.boughtList.length == 0"> {{alreadyBought.message}}</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
