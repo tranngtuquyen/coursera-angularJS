@@ -1,0 +1,9 @@
+<div>
+    <h3>List of found items</h3>
+    <ul>
+      <li ng-repeat="item in found">
+          <span class="col-md-9">{{item.name}}: {{item.description}}</span>
+          <button ng-click="remove({index: $index})" class="col-md-3">Don't want this one</button>
+      </li>
+    </ul>
+  </div>
