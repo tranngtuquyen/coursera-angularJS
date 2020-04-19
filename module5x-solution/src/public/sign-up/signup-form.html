@@ -1,0 +1,53 @@
+<div class="container">
+    <h3>Sign up for the newsletter</h3>
+    <fieldset>
+        <legend>Sign Up</legend>
+        <form name="signUpForm" class="form row" novalidate>
+            <div class="form-group">
+                <input type="text" ng-model="signupCtrl.firstName" name="firstName" placeholder="First Name"
+                required>
+                <span ng-if="signUpForm.firstName.$error.required && signUpForm.firstName.$touched">
+                    First name is required
+                </span>
+                <br>
+            </div>
+            <div class="form-group">
+                <input type="text" ng-model="signupCtrl.lastName" name="lastName" placeholder="Last Name"
+                required>
+                <span ng-if="signUpForm.lastName.$error.required && signUpForm.lastName.$touched">
+                    Last name is required
+                </span>
+                <br>
+            </div>
+            <div class="form-group">
+                <input type="email" ng-model="signupCtrl.email" name="email" placeholder="Email Address"
+                required>
+                <span ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+                    Email is invalid
+                </span>
+            </div>
+            <div class="form-group">
+                <input type="text" ng-model="signupCtrl.phone" name="phone" placeholder="Phone Number XXX-XXX-XXXX"
+                pattern="(\d{3})-(\d{3})-(\d{4})">
+                <span ng-if="signUpForm.phone.$invalid && signUpForm.phone.$touched">Phone number is invalid</span>
+                <br>
+            </div>
+            <div class="form-group">
+                <span>Specify your favorite dish, for example: A1, B2, L3</span><br>
+                <input type="text" ng-model="signupCtrl.favDish" name="favDish" placeholder="Favoride dish"
+                required
+                pattern="([a-zA-Z]{1,2})(\d{1,2})">
+                <span ng-if="signUpForm.favDish.$invalid && signUpForm.favDish.$touched">
+                    Input is invalid (\d{1,2})" 
+                </span>
+                <br>
+            </div>
+            <button
+            ng-disabled="signUpForm.$invalid"
+            ng-click="signupCtrl.signUpClick()">Submit</button>
+        </form>
+    </fieldset>
+    <p ng-if="signupCtrl.successMsg">{{signupCtrl.successMsg}}</p>
+    <p ng-if="signupCtrl.errorMsg">{{signupCtrl.errorMsg}}</p>
+    
+</div>

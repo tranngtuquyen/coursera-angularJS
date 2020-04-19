@@ -1,0 +1,13 @@
+<div ng-if="memberCtrl.showMember" class="container">
+    <h3>Your information</h3>
+    First Name: {{memberCtrl.result.firstName}}<br>
+    Last Name: {{memberCtrl.result.lastName}}<br>
+    Email: {{memberCtrl.result.email}}<br>
+    Phone: {{memberCtrl.result.phone}}<br>
+    Your Favorite Dish<br>
+    <div>
+        <img class="img-responsive" width="250" height="150" ng-src="https://quyentran-coursera-angular.herokuapp.com/images/{{memberCtrl.result.dish.short_name}}.jpg">
+    </div>
+    {{memberCtrl.result.dish.name}}: {{memberCtrl.result.dish.description}}<br>
+</div>
+<div ng-if="!memberCtrl.showMember" class="container">Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a></div>
